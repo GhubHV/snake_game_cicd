@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table, th, td {
+    border: 1px solid #333;
+}
+
+td {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #333;
+    background-color: #fff;
+}
+
+td:nth-child(odd) {
+    background-color: #eaeaea;
+}
+
