@@ -9,6 +9,7 @@
 </head>
 
 
+
 <body>
     <div class="container">
         <h1>Snake Game</h1>
