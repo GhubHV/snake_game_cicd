@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     boutonJoueur1.addEventListener('click', () => {
         var tirage = Math.floor(Math.random() * 6) + 1;
         boutonJoueur1.textContent = `Joueur_1 ${tirage}`;
-        positionJoueur1 = (positionJoueur1 + tirage) % 50;
+        positionJoueur1 = positionJoueur1 + tirage;
+        if (positionJoueur1 > 50) {
+            positionJoueur1 = 25;
+        }
         boutonJoueur1.disabled = true;
         boutonJoueur2.disabled = false;
         dessinerPlateau(positionJoueur1, positionJoueur2);
@@ -29,7 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     boutonJoueur2.addEventListener('click', () => {
         var tirage = Math.floor(Math.random() * 6) + 1;
         boutonJoueur2.textContent = `Joueur_2 ${tirage}`;
-        positionJoueur2 = (positionJoueur2 + tirage) % 50;
+        positionJoueur2 = positionJoueur2 + tirage;
+        if (positionJoueur2 > 50) {
+            positionJoueur2 = 25;
+        }
         boutonJoueur1.disabled = false;
         boutonJoueur2.disabled = true;
         dessinerPlateau(positionJoueur1, positionJoueur2);
