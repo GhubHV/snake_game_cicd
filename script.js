@@ -1,4 +1,10 @@
+var piege1 = Math.floor(Math.random() * 48) + 2;
+var piege2 = Math.floor(Math.random() * 48) + 2;
+var piege3 = Math.floor(Math.random() * 48) + 2;
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    calculerPieges();
 
     var positionJoueur1 = 1;
     var positionJoueur2 = 1;
@@ -11,11 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     boutonJoueur1.textContent = 'Joueur_1 0';
     boutonJoueur1.style = 'margin:50px';
     boutonJoueur1.style = "width:60px; height:40px";
+    boutonJoueur1.style = 'background-color:red';
 
     var boutonJoueur2 = document.createElement('button');
     boutonJoueur2.textContent = 'Joueur_2 0';
     boutonJoueur2.style = 'margin:50px';
     boutonJoueur2.style = "width:60px; height:40px";
+    boutonJoueur2.style = 'background-color:green';
 
     boutonJoueur1.addEventListener('click', () => {
         var tirage = Math.floor(Math.random() * 6) + 1;
@@ -23,6 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
         positionJoueur1 = positionJoueur1 + tirage;
         if (positionJoueur1 > 50) {
             positionJoueur1 = 25;
+        }
+        if (positionJoueur1 === piege1) {
+            setTimeout(() => {
+                var penalite = Math.floor(piege1*0.5);
+                alert('Joueur_1 recule de ' + penalite + ' cases');
+                positionJoueur1 = positionJoueur1 -  penalite;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 500);
+        }
+        if (positionJoueur1 === piege2) {
+            setTimeout(() => {
+                var penalite = Math.floor(piege2*0.5);
+                alert('Joueur_1 recule de ' + penalite + ' cases');
+                positionJoueur1 = positionJoueur1 -  penalite;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 500);
+        }
+        if (positionJoueur1 === piege3) {
+            setTimeout(() => {
+                var penalite = Math.floor(piege3*0.5);
+                alert('Joueur_1 recule de ' + penalite + ' cases');
+                positionJoueur1 = positionJoueur1 -  penalite;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 500);
         }
         boutonJoueur1.disabled = true;
         boutonJoueur2.disabled = false;
@@ -35,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 positionJoueur2 = 1;
                 boutonJoueur1.disabled = false;
                 boutonJoueur2.disabled = true;
+                calculerPieges();
                 dessinerPlateau(positionJoueur1, positionJoueur2);
             }
                 , 500);
@@ -49,6 +82,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (positionJoueur2 > 50) {
             positionJoueur2 = 25;
         }
+        if (positionJoueur2 === piege1) {
+            setTimeout(() => {
+                var penalite = Math.floor(piege1*0.5);
+                alert('Joueur_2 recule de ' + penalite + ' cases');
+                positionJoueur2 = positionJoueur2 -  penalite;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 500);
+        }
+        if (positionJoueur2 === piege2) {
+            setTimeout(() => {
+                var penalite = Math.floor(piege2*0.5);
+                alert('Joueur_2 recule de ' + penalite + ' cases');
+                positionJoueur2 = positionJoueur2 -  penalite;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 500);
+        }
+        if (positionJoueur2 === piege3) {
+            setTimeout(() => {
+                var penalite = Math.floor(piege3*0.5);
+                alert('Joueur_2 recule de ' + penalite + ' cases');
+                positionJoueur2 = positionJoueur2 -  penalite;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 500);
+        }
         boutonJoueur1.disabled = false;
         boutonJoueur2.disabled = true;
         if (positionJoueur2 === 50) {
@@ -60,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 positionJoueur2 = 1;
                 boutonJoueur1.disabled = false;
                 boutonJoueur2.disabled = true;
+                calculerPieges();
                 dessinerPlateau(positionJoueur1, positionJoueur2);
             }
                 , 500);
@@ -122,9 +180,31 @@ function dessinerPlateau(positionJoueur1, positionJoueur2) {
                 cell.appendChild(pion2);
             }
 
+            if (number === piege1) {
+                cell.style.backgroundColor = 'grey';
+            }
+            if (number === piege2) {
+                cell.style.backgroundColor = 'grey';
+            }
+            if (number === piege3) {
+                cell.style.backgroundColor = 'grey';
+            }
+
             row.appendChild(cell);
             number++;
         }
         tableBody.appendChild(row);
+    }
+}
+
+function calculerPieges() {
+    piege1 = Math.floor(Math.random() * 48) + 2;
+    piege2 = Math.floor(Math.random() * 48) + 2;
+    while (piege2 === piege1) {
+        piege2 = Math.floor(Math.random() * 48) + 2;
+    }
+    piege3 = Math.floor(Math.random() * 48) + 2;
+    while (piege3 === piege1 || piege3 === piege2) {
+        piege3 = Math.floor(Math.random() * 48) + 2;
     }
 }
