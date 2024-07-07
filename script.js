@@ -26,6 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         boutonJoueur1.disabled = true;
         boutonJoueur2.disabled = false;
+        if (positionJoueur1 === 50) {
+            dessinerPlateau(positionJoueur1, positionJoueur2);
+            setTimeout(() => {
+
+                alert('Joueur_1 gagne');
+                positionJoueur1 = 1;
+                positionJoueur2 = 1;
+                boutonJoueur1.disabled = false;
+                boutonJoueur2.disabled = true;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }
+                , 500);
+        }
         dessinerPlateau(positionJoueur1, positionJoueur2);
     });
 
@@ -38,6 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         boutonJoueur1.disabled = false;
         boutonJoueur2.disabled = true;
+        if (positionJoueur2 === 50) {
+            dessinerPlateau(positionJoueur1, positionJoueur2);
+            setTimeout(() => {
+
+                alert('Joueur_2 gagne');
+                positionJoueur1 = 1;
+                positionJoueur2 = 1;
+                boutonJoueur1.disabled = false;
+                boutonJoueur2.disabled = true;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }
+                , 500);
+        }
+
         dessinerPlateau(positionJoueur1, positionJoueur2);
     });
 
