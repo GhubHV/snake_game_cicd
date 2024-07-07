@@ -2,9 +2,12 @@ var piege1 = Math.floor(Math.random() * 48) + 2;
 var piege2 = Math.floor(Math.random() * 48) + 2;
 var piege3 = Math.floor(Math.random() * 48) + 2;
 
+var bonus1 = Math.floor(Math.random() * 28) + 2;
+var bonus2 = Math.floor(Math.random() * 28) + 2;
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    calculerPieges();
+    calculerPiegesBonus();
 
     var positionJoueur1 = 1;
     var positionJoueur2 = 1;
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Joueur_1 recule de ' + penalite + ' cases');
                 positionJoueur1 = positionJoueur1 -  penalite;
                 dessinerPlateau(positionJoueur1, positionJoueur2);
-            }, 500);
+            }, 200);
         }
         if (positionJoueur1 === piege2) {
             setTimeout(() => {
@@ -46,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Joueur_1 recule de ' + penalite + ' cases');
                 positionJoueur1 = positionJoueur1 -  penalite;
                 dessinerPlateau(positionJoueur1, positionJoueur2);
-            }, 500);
+            }, 200);
         }
         if (positionJoueur1 === piege3) {
             setTimeout(() => {
@@ -54,7 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Joueur_1 recule de ' + penalite + ' cases');
                 positionJoueur1 = positionJoueur1 -  penalite;
                 dessinerPlateau(positionJoueur1, positionJoueur2);
-            }, 500);
+            }, 200);
+        }
+        if (positionJoueur1 === bonus1) {
+            setTimeout(() => {
+                var bonus = 10;
+                alert('Joueur_1 avance de ' + bonus + ' cases');
+                positionJoueur1 = positionJoueur1 + bonus;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 200);
+        }
+        if (positionJoueur1 === bonus2) {
+            setTimeout(() => {
+                var bonus = 5;
+                alert('Joueur_1 avance de ' + bonus + ' cases');
+                positionJoueur1 = positionJoueur1 + bonus;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 200);
         }
         boutonJoueur1.disabled = true;
         boutonJoueur2.disabled = false;
@@ -67,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 positionJoueur2 = 1;
                 boutonJoueur1.disabled = false;
                 boutonJoueur2.disabled = true;
-                calculerPieges();
+                calculerPiegesBonus();
                 dessinerPlateau(positionJoueur1, positionJoueur2);
             }
-                , 500);
+                , 200);
         }
         dessinerPlateau(positionJoueur1, positionJoueur2);
     });
@@ -88,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Joueur_2 recule de ' + penalite + ' cases');
                 positionJoueur2 = positionJoueur2 -  penalite;
                 dessinerPlateau(positionJoueur1, positionJoueur2);
-            }, 500);
+            }, 200);
         }
         if (positionJoueur2 === piege2) {
             setTimeout(() => {
@@ -96,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Joueur_2 recule de ' + penalite + ' cases');
                 positionJoueur2 = positionJoueur2 -  penalite;
                 dessinerPlateau(positionJoueur1, positionJoueur2);
-            }, 500);
+            }, 200);
         }
         if (positionJoueur2 === piege3) {
             setTimeout(() => {
@@ -104,7 +123,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Joueur_2 recule de ' + penalite + ' cases');
                 positionJoueur2 = positionJoueur2 -  penalite;
                 dessinerPlateau(positionJoueur1, positionJoueur2);
-            }, 500);
+            }, 200);
+        }
+        if (positionJoueur2 === bonus1) {
+            setTimeout(() => {
+                var bonus = 10;
+                alert('Joueur_2 avance de ' + bonus + ' cases');
+                positionJoueur2 = positionJoueur2 + bonus;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 200);
+        }
+        if (positionJoueur2 === bonus2) {
+            setTimeout(() => {
+                var bonus = 5;
+                alert('Joueur_2 avance de ' + bonus + ' cases');
+                positionJoueur2 = positionJoueur2 + bonus;
+                dessinerPlateau(positionJoueur1, positionJoueur2);
+            }, 200);
         }
         boutonJoueur1.disabled = false;
         boutonJoueur2.disabled = true;
@@ -117,10 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 positionJoueur2 = 1;
                 boutonJoueur1.disabled = false;
                 boutonJoueur2.disabled = true;
-                calculerPieges();
+                calculerPiegesBonus();
                 dessinerPlateau(positionJoueur1, positionJoueur2);
             }
-                , 500);
+                , 200);
         }
 
         dessinerPlateau(positionJoueur1, positionJoueur2);
@@ -190,6 +225,13 @@ function dessinerPlateau(positionJoueur1, positionJoueur2) {
                 cell.style.backgroundColor = 'grey';
             }
 
+            if (number === bonus1) {
+                cell.style.backgroundColor = 'yellow';
+            }
+            if (number === bonus2) {
+                cell.style.backgroundColor = 'yellow';
+            }
+
             row.appendChild(cell);
             number++;
         }
@@ -197,7 +239,7 @@ function dessinerPlateau(positionJoueur1, positionJoueur2) {
     }
 }
 
-function calculerPieges() {
+function calculerPiegesBonus() {
     piege1 = Math.floor(Math.random() * 48) + 2;
     piege2 = Math.floor(Math.random() * 48) + 2;
     while (piege2 === piege1) {
@@ -206,5 +248,11 @@ function calculerPieges() {
     piege3 = Math.floor(Math.random() * 48) + 2;
     while (piege3 === piege1 || piege3 === piege2) {
         piege3 = Math.floor(Math.random() * 48) + 2;
+    }
+
+    bonus1 = Math.floor(Math.random() * 28) + 2;
+    bonus2 = Math.floor(Math.random() * 28) + 2;
+    while (bonus2 === bonus1 || bonus2 === piege1 || bonus2 === piege2 || bonus2 === piege3) {
+        bonus2 = Math.floor(Math.random() * 28) + 2;
     }
 }
