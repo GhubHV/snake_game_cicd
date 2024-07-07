@@ -1,0 +1,17 @@
+{
+  "name": "snake_game_cicd",
+  "version": "1.0.0",
+  "description": "Jeu du serpent",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Hélias, Mael et Théo",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "jsdom": "^24.1.0"
+  }
+}

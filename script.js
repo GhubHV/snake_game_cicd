@@ -255,4 +255,8 @@ function calculerPiegesBonus() {
     while (bonus2 === bonus1 || bonus2 === piege1 || bonus2 === piege2 || bonus2 === piege3) {
         bonus2 = Math.floor(Math.random() * 28) + 2;
     }
+
+    return { piege1, piege2, piege3, bonus1, bonus2 };
 }
+
+module.exports = {calculerPiegesBonus,dessinerPlateau};
