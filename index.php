@@ -16,6 +16,7 @@
                 <script src="script.js"></script>
             </tbody>
         </table>
+        <button id="divBoutons"></button>
     </div>
     <footer>Réalisé par Mael OLIVEIRA, Théo HOFFMANN et Hélias VECELLIO - <?php echo date('Y'); ?></footer>
 

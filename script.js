@@ -1,4 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    var positionJoueur1 = 1;
+    var positionJoueur2 = 1;
+
+    dessinerPlateau(positionJoueur1, positionJoueur2);
+
+    const divBoutons = document.getElementById('divBoutons');
+
+    var boutonJoueur1 = document.createElement('button');
+    boutonJoueur1.textContent = 'Joueur_1 0';
+    boutonJoueur1.style = 'margin:50px';
+    boutonJoueur1.style = "width:60px; height:40px";
+
+    var boutonJoueur2 = document.createElement('button');
+    boutonJoueur2.textContent = 'Joueur_2 0';
+    boutonJoueur2.style = 'margin:50px';
+    boutonJoueur2.style = "width:60px; height:40px";
+
+    boutonJoueur1.addEventListener('click', () => {
+        var tirage = Math.floor(Math.random() * 6) + 1;
+        boutonJoueur1.textContent = `Joueur_1 ${tirage}`;
+        positionJoueur1 = (positionJoueur1 + tirage) % 50;
+        boutonJoueur1.disabled = true;
+        boutonJoueur2.disabled = false;
+        dessinerPlateau(positionJoueur1, positionJoueur2);
+    });
+
+    boutonJoueur2.addEventListener('click', () => {
+        var tirage = Math.floor(Math.random() * 6) + 1;
+        boutonJoueur2.textContent = `Joueur_2 ${tirage}`;
+        positionJoueur2 = (positionJoueur2 + tirage) % 50;
+        boutonJoueur1.disabled = false;
+        boutonJoueur2.disabled = true;
+        dessinerPlateau(positionJoueur1, positionJoueur2);
+    });
+
+    boutonJoueur2.disabled = true;
+
+    divBoutons.appendChild(boutonJoueur1);
+    divBoutons.appendChild(boutonJoueur2);
+
+
+});
+
+function dessinerPlateau(positionJoueur1, positionJoueur2) {
     const table = document.querySelector('#numberTable');
     table.style.border = "1px solid #000"
     // the same as
@@ -6,13 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     table.style.borderColor = "#000";
     table.style.borderStyle = "solid";
     const tableBody = document.querySelector('#numberTable tbody');
+    tableBody.innerHTML = "";
 
     const rows = 5;
     const cols = 10;
     let number = 1;
-
-    const positionJoueur1 = 1;
-    const positionJoueur2 = 1;
 
     tableBody.style.textAlign = "center";
 
@@ -51,6 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         tableBody.appendChild(row);
     }
-});
-
-
+}
