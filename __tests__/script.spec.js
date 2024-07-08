@@ -1,6 +1,5 @@
 const { JSDOM } = require('jsdom');
 
-// Simuler le document HTML
 const dom = new JSDOM(`
 <!DOCTYPE html>
 <html lang="fr">

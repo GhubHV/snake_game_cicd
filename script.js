@@ -172,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function dessinerPlateau(positionJoueur1, positionJoueur2) {
     const table = document.querySelector('#numberTable');
     table.style.border = "1px solid #000"
-    // the same as
     table.style.borderWidth = "1px";
     table.style.borderColor = "#000";
     table.style.borderStyle = "solid";
@@ -190,7 +189,6 @@ function dessinerPlateau(positionJoueur1, positionJoueur2) {
         for (let j = 0; j < cols; j++) {
             const cell = document.createElement('td');
             cell.style.border = "1px solid #000"
-            // the same as
             cell.style.borderWidth = "1px";
             cell.style.borderColor = "#000";
             cell.style.borderStyle = "solid";
